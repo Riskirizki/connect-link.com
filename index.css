@@ -27,8 +27,6 @@ button {
 }
 
 @media only screen and (max-width: 600px) {
-  /* Atur tata letak untuk layar dengan lebar maksimum 600px */
-  /* Contoh: Menyesuaikan lebar elemen untuk tampilan mobile */
   #contact-list {
     width: 100%;
   }
