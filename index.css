@@ -1,0 +1,146 @@
+/* Connect Book Style */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+button {
+  margin: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+@media only screen and (max-width: 600px) {
+  /* Atur tata letak untuk layar dengan lebar maksimum 600px */
+  /* Contoh: Menyesuaikan lebar elemen untuk tampilan mobile */
+  #contact-list {
+    width: 100%;
+  }
+}
+
+button {
+  cursor: pointer;
+  background-color: #45a049;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3e8942;
+}
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#contact-list,
+#contact-details,
+#add-contact-form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#contact-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#contact-details,
+#add-contact-form {
+  display: none;
+}
+
+.contact-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+.contact-item:hover {
+  background-color: #f9f9f9;
+}
+
+.contact-item p {
+  margin: 5px 0;
+}
+
+.contact-item p:first-child {
+  font-weight: bold;
+}
+
+.contact-details p {
+  margin-bottom: 10px;
+}
+
+/* Tambahan untuk bagian Group */
+
+#add-contact-form select {
+  margin: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  background-color: #f2f2f2;
+}
+
+/* Gaya untuk opsi grup */
+#add-contact-form select option {
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Efek hover untuk opsi grup */
+#add-contact-form select option:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+/* Tooltip untuk opsi grup */
+#add-contact-form select option::after {
+  content: attr(data-tooltip);
+  display: none;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+#add-contact-form select option:hover::after {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  margin-top: -30px;
+  margin-left: 120px;
+}
+
+/* Icon untuk opsi grup */
+#add-contact-form select option[data-icon] {
+  padding-left: 25px;
+  background-repeat: no-repeat;
+  background-position: 2px 50%;
+}
