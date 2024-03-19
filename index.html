@@ -13,15 +13,16 @@
         <input type="text" id="search" placeholder="Search contacts..." />
         <button onclick="showAddContactForm()">Add New Contact</button>
       </header>
-      <div id="contact-list">
-        <!-- Contact list will be displayed here -->
-      </div>
-      <div id="contact-details">
-        <!-- Contact details will be displayed here -->
-      </div>
-      <div id="add-contact-form" style="display: none">
-        <!-- Add contact form will be displayed here -->
-      </div>
+      <main>
+        <!-- Daftar kontak akan ditampilkan di sini -->
+        <div id="contact-list"></div>
+
+        <!-- Detail kontak akan ditampilkan di sini -->
+        <div id="contact-details" aria-live="polite"></div>
+
+        <!-- Formulir tambah kontak akan ditampilkan di sini -->
+        <div id="add-contact-form" style="display: none"></div>
+      </main>
     </div>
     <script src="index.js"></script>
   </body>
