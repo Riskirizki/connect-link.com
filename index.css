@@ -9,8 +9,8 @@ body {
 }
 
 header {
-  background-color: #4caf50; /* Warna latar belakang hijau untuk header */
-  color: #fff; /* Warna teks putih untuk kontras */
+  background-color: #4caf50; /* Green background color for header */
+  color: #fff; /* White text color for contrast */
   padding: 25px;
   display: flex;
   justify-content: space-between;
@@ -18,21 +18,21 @@ header {
 }
 
 .logo img {
-  width: 40px; /* Sesuaikan dengan ukuran yang diinginkan */
-  height: auto; /* Biarkan ketinggian mengikuti proporsi aslinya */
-  margin-right: -20px; /* Berikan jarak antara logo dan judul */
+  width: 40px; /* Adjust as desired */
+  height: auto; /* Maintain original proportions */
+  margin-right: -20px; /* Spacing between logo and title */
   vertical-align: middle;
 }
 
 h1 {
-  margin: 0; /* Menghapus margin bawaan dari h1 */
-  background-color: #4caf50; /* Warna latar belakang hijau untuk judul */
-  padding: 10px 20px; /* Menambahkan padding agar judul terlihat lebih jelas */
-  border-radius: 5px; /* Mengatur sudut border agar terlihat lebih halus */
-  margin-left: -60px; /* Berikan jarak antara logo dan judul */
+  margin: 0; /* Remove default h1 margin */
+  background-color: #4caf50; /* Green background color for title */
+  padding: 10px 20px; /* Add padding for clearer title */
+  border-radius: 5px; /* Smooth border corners */
+  margin-left: -60px; /* Spacing between logo and title */
 }
 
-/* Memastikan tampilan yang user-friendly */
+/* Ensure user-friendly appearance */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
