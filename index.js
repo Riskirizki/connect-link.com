@@ -27,6 +27,8 @@ function displayContactsList(filteredContacts = contacts) {
     contactItem.addEventListener("click", () => showContactDetails(contact));
     contactList.appendChild(contactItem);
   });
+
+  console.log("Displayed contact list:", filteredContacts);
 }
 
 // Function to display contact details
@@ -42,6 +44,8 @@ function showContactDetails(contact) {
     <button onclick="editContact(${contact.id})">Edit</button>
     <button onclick="deleteContact(${contact.id})">Delete</button>
   `;
+
+  console.log("Showing contact details for:", contact);
 }
 
 // Function to display add contact form
@@ -56,6 +60,8 @@ function showAddContactForm() {
     <input type="text" id="address" placeholder="Address">
     <button onclick="addContact()">Save</button>
   `;
+
+  console.log("Displaying add contact form...");
 }
 
 // Function to add a new contact
@@ -76,12 +82,16 @@ function addContact() {
   contacts.push(newContact);
   displayContactsList();
   hideAddContactForm();
+
+  console.log("New contact added:", newContact);
 }
 
 // Function to hide add contact form
 function hideAddContactForm() {
   const addContactForm = document.getElementById("add-contact-form");
   addContactForm.style.display = "none";
+
+  console.log("Hiding add contact form...");
 }
 
 // Function to edit a contact
@@ -100,6 +110,8 @@ function editContact(id) {
   const contactDetails = document.getElementById("contact-details");
   contactDetails.innerHTML = "";
   contactDetails.appendChild(editContactForm);
+
+  console.log("Editing contact:", contact);
 }
 
 // Function to save edited contact
@@ -114,12 +126,16 @@ function saveEditedContact(id) {
     contacts[index] = { id, name, phone, email, address };
     displayContactsList();
   }
+
+  console.log("Saving edited contact:", { id, name, phone, email, address });
 }
 
 // Function to delete a contact
 function deleteContact(id) {
   contacts = contacts.filter((contact) => contact.id !== id);
   displayContactsList();
+
+  console.log("Contact deleted. Remaining contacts:", contacts);
 }
 
 // Event listener for contact search feature
@@ -135,6 +151,9 @@ document.getElementById("search").addEventListener("input", function () {
   });
 
   displayContactsList(filteredContacts);
+
+  console.log("Search term:", searchTerm);
+  console.log("Filtered contacts based on search term:", filteredContacts);
 });
 
 // Display contact list initially
