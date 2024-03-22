@@ -1,4 +1,4 @@
-// Deklarasi data kontak awal
+// Initial contacts data
 let contacts = [
   {
     id: 1,
@@ -16,26 +16,24 @@ let contacts = [
   },
 ];
 
-// Fungsi untuk menampilkan daftar kontak
+// Function to display contact list
 function displayContactsList(filteredContacts = contacts) {
   const contactList = document.getElementById("contact-list");
   contactList.innerHTML = "";
 
-  // Membuat elemen HTML untuk setiap kontak dan menambahkannya ke daftar kontak
   filteredContacts.forEach((contact) => {
     const contactItem = document.createElement("div");
     contactItem.innerHTML = `<p>${contact.name}</p>`;
-    // Menambahkan event listener untuk menampilkan detail kontak saat diklik
     contactItem.addEventListener("click", () => showContactDetails(contact));
     contactList.appendChild(contactItem);
   });
 }
 
-// Fungsi untuk menampilkan detail kontak
+// Function to display contact details
 function showContactDetails(contact) {
   const contactDetails = document.getElementById("contact-details");
   contactDetails.style.display = "block";
-  // Menampilkan detail kontak beserta tombol Edit dan Delete
+
   contactDetails.innerHTML = `
     <p>Name: ${contact.name}</p>
     <p>Phone: ${contact.phone}</p>
@@ -43,31 +41,30 @@ function showContactDetails(contact) {
     <p>Address: ${contact.address}</p>
     <button onclick="editContact(${contact.id})">Edit</button>
     <button onclick="deleteContact(${contact.id})">Delete</button>
-`;
+  `;
 }
 
-// Fungsi untuk menampilkan formulir tambah kontak
+// Function to display add contact form
 function showAddContactForm() {
   const addContactForm = document.getElementById("add-contact-form");
   addContactForm.style.display = "block";
-  // Menampilkan formulir tambah kontak dengan input untuk setiap informasi kontak
+
   addContactForm.innerHTML = `
     <input type="text" id="name" placeholder="Name">
     <input type="tel" id="phone" placeholder="Phone">
     <input type="email" id="email" placeholder="Email">
     <input type="text" id="address" placeholder="Address">
     <button onclick="addContact()">Save</button>
-`;
+  `;
 }
 
-// Fungsi untuk menambahkan kontak baru
+// Function to add a new contact
 function addContact() {
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const email = document.getElementById("email").value;
   const address = document.getElementById("address").value;
 
-  // Membuat objek kontak baru dan menambahkannya ke daftar kontak
   const newContact = {
     id: contacts.length + 1,
     name,
@@ -77,41 +74,41 @@ function addContact() {
   };
 
   contacts.push(newContact);
-  displayContactsList(); // Memperbarui daftar kontak dengan kontak baru yang ditambahkan
-  hideAddContactForm(); // Menyembunyikan formulir tambah kontak setelah kontak baru disimpan
+  displayContactsList();
+  hideAddContactForm();
 }
 
-// Fungsi untuk menyembunyikan formulir tambah kontak
+// Function to hide add contact form
 function hideAddContactForm() {
   const addContactForm = document.getElementById("add-contact-form");
   addContactForm.style.display = "none";
 }
 
-// Fungsi untuk mengedit kontak
+// Function to edit a contact
 function editContact(id) {
   const contact = contacts.find((contact) => contact.id === id);
   const editContactForm = document.createElement("div");
-  // Menampilkan formulir edit kontak dengan nilai yang sudah ada
+
   editContactForm.innerHTML = `
     <input type="text" id="edit-name" value="${contact.name}">
     <input type="tel" id="edit-phone" value="${contact.phone}">
     <input type="email" id="edit-email" value="${contact.email}">
     <input type="text" id="edit-address" value="${contact.address}">
     <button onclick="saveEditedContact(${contact.id})">Save</button>
-`;
+  `;
+
   const contactDetails = document.getElementById("contact-details");
   contactDetails.innerHTML = "";
   contactDetails.appendChild(editContactForm);
 }
 
-// Fungsi untuk menyimpan kontak yang sudah diedit
+// Function to save edited contact
 function saveEditedContact(id) {
   const name = document.getElementById("edit-name").value;
   const phone = document.getElementById("edit-phone").value;
   const email = document.getElementById("edit-email").value;
   const address = document.getElementById("edit-address").value;
 
-  // Mencari indeks kontak yang akan diedit dan memperbarui informasinya
   const index = contacts.findIndex((contact) => contact.id === id);
   if (index !== -1) {
     contacts[index] = { id, name, phone, email, address };
@@ -119,16 +116,16 @@ function saveEditedContact(id) {
   }
 }
 
-// Fungsi untuk menghapus kontak
+// Function to delete a contact
 function deleteContact(id) {
   contacts = contacts.filter((contact) => contact.id !== id);
   displayContactsList();
 }
 
-// Event listener untuk fitur pencarian kontak
+// Event listener for contact search feature
 document.getElementById("search").addEventListener("input", function () {
   const searchTerm = this.value.toLowerCase();
-  // Melakukan filter pada daftar kontak berdasarkan kata kunci pencarian
+
   const filteredContacts = contacts.filter((contact) => {
     return (
       contact.name.toLowerCase().includes(searchTerm) ||
@@ -136,8 +133,9 @@ document.getElementById("search").addEventListener("input", function () {
       contact.email.toLowerCase().includes(searchTerm)
     );
   });
+
   displayContactsList(filteredContacts);
 });
 
-// Menampilkan daftar kontak pada awalnya
+// Display contact list initially
 displayContactsList();
