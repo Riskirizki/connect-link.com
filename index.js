@@ -21,14 +21,27 @@ function displayContactsList(filteredContacts = contacts) {
   const contactList = document.getElementById("contact-list");
   contactList.innerHTML = "";
 
+  // Creating table element and header
+  const table = document.createElement("table");
+  const headerRow = document.createElement("tr");
+  headerRow.innerHTML =
+    "<th>Name</th><th>Phone</th><th>Email</th><th>Address</th>";
+  table.appendChild(headerRow);
+
+  // Adding rows for each contact to the table
   filteredContacts.forEach((contact) => {
-    const contactItem = document.createElement("div");
-    contactItem.innerHTML = `<p>${contact.name}</p>`;
-    contactItem.addEventListener("click", () => showContactDetails(contact));
-    contactList.appendChild(contactItem);
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${contact.name}</td><td>${contact.phone}</td><td>${contact.email}</td><td>${contact.address}</td>`;
+    // Adding event listener to show contact details when row is clicked
+    row.addEventListener("click", () => showContactDetails(contact));
+    table.appendChild(row);
   });
 
-  console.log("Displayed contact list:", filteredContacts);
+  // Adding the table to the content
+  contactList.appendChild(table);
+
+  // Displaying the result in console.log
+  console.log("Contact table has been created:", table);
 }
 
 // Function to display contact details
@@ -121,11 +134,13 @@ function saveEditedContact(id) {
   const email = document.getElementById("edit-email").value;
   const address = document.getElementById("edit-address").value;
 
-  const index = contacts.findIndex((contact) => contact.id === id);
-  if (index !== -1) {
-    contacts[index] = { id, name, phone, email, address };
-    displayContactsList();
-  }
+  contacts = contacts.map((contact) => {
+    if (contact.id === id) {
+      return { id, name, phone, email, address };
+    }
+    return contact;
+  });
+  displayContactsList();
 
   console.log("Saving edited contact:", { id, name, phone, email, address });
 }
